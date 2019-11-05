@@ -1,0 +1,99 @@
+* {
+  margin: 0;
+  padding: 0; }
+
+#sidebar {
+  height: 100%;
+  background-color: #2b2b2b;
+  text-align: center;
+  padding-top: 75px; }
+  #sidebar .section {
+    margin: 0 15px; }
+  #sidebar .widget {
+    color: #ccc;
+    line-height: 1.4;
+    margin: 0 0 10px !important; }
+    #sidebar .widget ul {
+      margin: 0;
+      padding: 0;
+      line-height: 1.2; }
+      #sidebar .widget ul li {
+        padding: 0.25em 0;
+        margin: 0;
+        text-indent: 0;
+        display: block; }
+        #sidebar .widget ul li a {
+          color: #ccc;
+          font-weight: 500;
+          display: block;
+          padding: 0; }
+    #sidebar .widget .site-title {
+      margin: 10px 0;
+      text-transform: uppercase; }
+      #sidebar .widget .site-title .logo {
+        text-decoration: none;
+        color: #f76b61;
+        padding-top: 10px;
+        margin-bottom: 0;
+        display: inline-block;
+        font-size: 50px;
+        font-weight: 700; }
+  #sidebar .sosial a {
+    text-decoration: none;
+    padding: 5px;
+    color: #f76b61; }
+
+#sidebar {
+  position: fixed; }
+
+.post {
+  position: relative;
+  min-height: 0; }
+
+a {
+  text-decoration: none !important; }
+
+article {
+  font-size: 16px;
+  -webkit-text-stroke: 0.3px;
+  background-color: #fff;
+  border-bottom: 1px solid #e1e2e3;
+  margin-bottom: 30px;
+  display: block; }
+  article img {
+    height: auto;
+    max-width: 100%; }
+  article h2 {
+    font-size: 29px;
+    font-weight: 300;
+    color: #787878; }
+  article .post-body {
+    padding: 10px 30px 15px;
+    color: #ccc;
+    font-size: 14px;
+    text-align: justify;
+    width: 100%; }
+    article .post-body .post-title {
+      text-align: left;
+      margin: 5px 0 10px;
+      line-height: 1.2; }
+    article .post-body .post-date-author {
+      font-size: 17px;
+      margin: 5px 0 10px; }
+    article .post-body img {
+      display: inline-block;
+      opacity: 1; }
+    article .post-body .pbtthumbimg {
+      float: left;
+      margin: 0 10px 5px 0;
+      padding: 0;
+      border: 0 solid #eee;
+      background: #fff;
+      width: 200px; }
+    article .post-body .morer {
+      padding: 10px;
+      float: left;
+      border: 1px solid;
+      border-radius: 10px;
+      color: #f76b61; }
+
