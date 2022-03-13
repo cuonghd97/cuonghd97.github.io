@@ -2,3 +2,12 @@
     font-size: 1.5rem;
     font-weight: 400;
 }
+
+.navbar {
+    display: flex;
+    align-items: center;
+}
+
+.pacman {
+    height: 72px;
+}
