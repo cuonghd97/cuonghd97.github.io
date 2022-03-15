@@ -8,7 +8,7 @@
 .navbar {
     display: flex;
     align-items: center;
-    max-width: 1080px;
+    max-width: 95%;
     margin: auto;
     padding: 25px 0;
 }
