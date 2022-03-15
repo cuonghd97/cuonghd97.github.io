@@ -1,3 +1,5 @@
+@import '../root-styles/vars.css';
+
 .header {
     font-size: 1.5rem;
     font-weight: 400;
@@ -6,6 +8,9 @@
 .navbar {
     display: flex;
     align-items: center;
+    max-width: 1080px;
+    margin: auto;
+    padding: 25px 0;
 }
 
 .pacman {

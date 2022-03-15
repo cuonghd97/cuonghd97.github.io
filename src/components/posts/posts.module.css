@@ -1,0 +1,21 @@
+@import "../root-styles/vars.css";
+
+.posts {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    grid-column-gap: 10px;
+    grid-row-gap: 10px;
+    max-width: var(--max-width);
+    margin: auto;
+}
+
+.post1 { grid-area: 1 / 1 / 2 / 2; }
+.post2 { grid-area: 1 / 2 / 2 / 3; }
+.post3 { grid-area: 1 / 3 / 2 / 4; }
+.post4 { grid-area: 2 / 1 / 3 / 2; }
+.post5 { grid-area: 2 / 2 / 3 / 3; }
+.post6 { grid-area: 2 / 3 / 3 / 4; }
+.post7 { grid-area: 3 / 1 / 4 / 2; }
+.post8 { grid-area: 3 / 2 / 4 / 3; }
+.post9 { grid-area: 3 / 3 / 4 / 4; }
