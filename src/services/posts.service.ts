@@ -1,7 +1,7 @@
-import {collection, getDocs} from "firebase/firestore";
-import {firestore} from "../libs/firebase/firebase";
+import { collection, getDocs } from 'firebase/firestore'
+import { firestore } from '../libs/firebase/firebase'
 
-const postsCollection = collection(firestore, "posts")
+const postsCollection = collection(firestore, 'posts')
 
 class PostsDataService {
     getListPosts = () => {
@@ -9,4 +9,4 @@ class PostsDataService {
     }
 }
 
-export default new PostsDataService();
+export default new PostsDataService()
