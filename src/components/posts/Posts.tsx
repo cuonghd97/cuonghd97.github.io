@@ -1,9 +1,27 @@
 import * as React from 'react';
 import styles from "./posts.module.css";
 import {PostItem} from "../post-item/PostItem";
+import PostsDataService from "../../services/posts.service";
+import {useEffect} from "react";
 
 type Props = {};
 export const Posts = (props: Props) => {
+
+    useEffect(() => {
+        getListsPost().then(()=> {
+            console.log("Get data success")
+        })
+
+        return () => {
+
+        };
+    }, []);
+
+
+    const getListsPost = async () => {
+        const listPosts = await PostsDataService.getListPosts()
+        console.log(listPosts)
+    }
     return (
         <div className={styles.posts}>
             <PostItem className={styles.post1} title={"Post 1"}/>
