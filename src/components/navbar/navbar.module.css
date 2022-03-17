@@ -22,3 +22,7 @@
 .pacman {
     height: 72px;
 }
+.menu {
+    display: flex;
+    justify-content: space-around;
+}

@@ -9,14 +9,12 @@ export const NavBar = () => {
                 <span className={styles.headerText}>Empty Blog</span>
                 <img src={pacman} alt="pacman" className={styles.pacman} />
             </div>
-            <div>
-                <ul>
+                <ul className={styles.menu}>
                     <li>Home</li>
                     <li>Java</li>
                     <li>Deign pattern</li>
                     <li>About me</li>
                 </ul>
-            </div>
         </div>
     )
 }
