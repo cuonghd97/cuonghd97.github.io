@@ -25,23 +25,25 @@ export const Posts = (props: Props) => {
                 id: doc.id,
                 content: doc.data()['contents'],
                 title: doc.data()['title'],
-                createdAt: doc.data()["created_at"]["seconds"]
+                createdAt: doc.data()['created_at']['seconds'],
             })
         })
 
         setListPost(listPostsModel)
     }
     return (
-        <div className={styles.posts}>
-            <ul>
-                {listPost.map((post) => {
-                    return (
-                        <li key={post.id}>
-                            <PostItem className="post" title={post.title} key={post.id} />
-                        </li>
-                    )
-                })}
-            </ul>
-        </div>
+        <ul className={styles.posts}>
+            {listPost.map((post) => {
+                return (
+                    <li key={post.id} className={styles.postItem}>
+                        <PostItem
+                            className="post"
+                            title={post.title}
+                            key={post.id}
+                        />
+                    </li>
+                )
+            })}
+        </ul>
     )
 }
