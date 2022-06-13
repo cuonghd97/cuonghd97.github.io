@@ -1,0 +1,55 @@
+@import '../root-styles/vars.css';
+
+.posts {
+    max-width: var(--max-width);
+    margin: 30px auto auto auto;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: 1fr 1fr;
+}
+
+.postItem {
+    transition: transform 0.2s;
+
+    background-color: #252728;
+    border: 1px solid #97a6b2;
+    width: 300px;
+    height: 300px;
+
+    -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+    -moz-box-sizing: border-box; /* Firefox, other Gecko */
+    box-sizing: border-box;
+
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+
+    span:not(:last-child) {
+        margin-bottom: 5px;
+    }
+
+    .tag {
+        color: #9f6c53;
+    }
+
+    .dateAdded {
+        color: #94a1ab;
+    }
+
+    .title {
+        flex: 1 0 50%;
+
+        display: inline-flex;
+        align-items: center;
+
+        font-size: 30px;
+        font-weight: 500;
+
+        color: #e6e8ec;
+    }
+}
+
+.postItem:hover {
+    transform: scale(1.1);
+    cursor: pointer;
+}

@@ -1,0 +1,28 @@
+@import '../root-styles/vars.css';
+
+.navbarContainer {
+    display: flex;
+    max-width: var(--max-width);
+    margin: auto;
+}
+
+.imageContainer {
+}
+
+.infoContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    margin-left: 20px;
+
+    .name {
+        font-size: 100px;
+        text-shadow: 5px 0 #ce7640, 0 5px 0 #669fd5, 0 -5px 0 #c4a84c;
+        color: #e7e9ed;
+    }
+
+    .title {
+        color: #96a5b3;
+    }
+}

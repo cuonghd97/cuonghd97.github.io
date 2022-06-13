@@ -1,0 +1,21 @@
+.menu {
+    margin-left: auto;
+
+    ul {
+        li {
+            list-style-type: none;
+            color: #96a5b3;
+            margin-bottom: 12px;
+        }
+        li:hover {
+            background-color: #e6e8ec;
+            color: #252728;
+            cursor: pointer;
+        }
+
+        .active {
+            background-color: #e6e8ec;
+            color: #252728;
+        }
+    }
+}

@@ -1,20 +1,21 @@
 import * as React from 'react'
-import styles from './navbar.module.css'
-import pacman from '../../assets/imgs/pacman.gif'
+import styles from './navbar.module.scss'
+import { Menu } from '../menu/Menu'
+
 
 export const NavBar = () => {
     return (
-        <div className={styles.navbar}>
-            <div className={styles.headerContainer}>
-                <span className={styles.headerText}>Empty Blog</span>
-                <img src={pacman} alt="pacman" className={styles.pacman} />
+        <div className={styles.navbarContainer}>
+            <div className={styles.imageContainer}>
+                <img alt=''
+                     src='https://picsum.photos/300/300' />
             </div>
-                <ul className={styles.menu}>
-                    <li>Home</li>
-                    <li>Java</li>
-                    <li>Deign pattern</li>
-                    <li>About me</li>
-                </ul>
+            <div className={styles.infoContainer}>
+                <span className={styles.name}>Cuong's</span>
+                <span className={styles.name}>Blog</span>
+                <span className={styles.title}>Backend developer</span>
+            </div>
+            <Menu />
         </div>
     )
 }
