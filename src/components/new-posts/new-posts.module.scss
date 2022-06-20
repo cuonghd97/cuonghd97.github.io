@@ -6,13 +6,17 @@
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows: 1fr 1fr;
+
+    border-left: 1px solid #97a6b2;
 }
 
 .postItem {
     transition: transform 0.2s;
 
     background-color: #252728;
-    border: 1px solid #97a6b2;
+    border-top: 1px solid #97a6b2;
+    border-right: 1px solid #97a6b2;
+    border-bottom: 1px solid #97a6b2;
     width: 300px;
     height: 300px;
 
@@ -52,4 +56,9 @@
 .postItem:hover {
     transform: scale(1.1);
     cursor: pointer;
+    border-left: 1px solid #97a6b2;
+}
+
+.link {
+    text-decoration: none;
 }

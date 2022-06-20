@@ -1,0 +1,9 @@
+.pageContent {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 50px;
+
+    .mainContent {
+        max-width: 1200px;
+    }
+}

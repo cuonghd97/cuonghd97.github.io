@@ -1,5 +1,5 @@
-import * as React from 'react'
-import styles from './menu.module.scss'
+import * as React from 'react';
+import styles from './menu.module.scss';
 
 export const Menu = () => {
     return (
@@ -12,5 +12,5 @@ export const Menu = () => {
                 <li>Golang</li>
             </ul>
         </div>
-    )
-}
+    );
+};

@@ -17,6 +17,7 @@
     "react-beautiful-dnd": "^13.1.0",
     "react-dom": "^17.0.2",
     "react-icons": "^4.3.1",
+    "react-markdown": "^8.0.3",
     "react-router-dom": "^6.2.2",
     "react-scripts": "5.0.0",
     "typescript": "^4.5.5",
@@ -29,7 +30,7 @@
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
-    "format": "npx prettier --write **/*.{css,scss,ts,tsx}"
+    "format": "npx prettier --write src/**/*.{css,scss,ts,tsx}"
   },
   "eslintConfig": {
     "extends": [
