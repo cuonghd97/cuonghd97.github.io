@@ -23,8 +23,8 @@ export const Posts = (props: Props) => {
         listPostsResponse.forEach((doc) => {
             listPostsModel.push({
                 id: doc.id,
-                content: doc.data()['contents'],
                 title: doc.data()['title'],
+                tag: doc.data()['tag'],
                 createdAt: doc.data()['created_at']['seconds'],
             });
         });
@@ -38,7 +38,7 @@ export const Posts = (props: Props) => {
                     <li key={post.id} className={styles.postItem}>
                         <PostItem
                             className="post"
-                            title={post.title}
+                            title={post.title!}
                             key={post.id}
                         />
                     </li>
