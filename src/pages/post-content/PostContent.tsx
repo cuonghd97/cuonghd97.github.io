@@ -51,7 +51,6 @@ export const PostContent = () => {
             for (const imageURL of listImageURL) {
                 mdContent = mdContent.replace(imageURL.fileName, imageURL.URL);
             }
-
             postModel.contents = mdContent;
 
             setPost(postModel);
