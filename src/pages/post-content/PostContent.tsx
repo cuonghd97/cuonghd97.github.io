@@ -48,7 +48,6 @@ export const PostContent = () => {
                 await FirebaseStorageService.getListFileDownloadURL(
                     postModel.images!
                 );
-            console.log(listImageURL);
             for (const imageURL of listImageURL) {
                 mdContent = mdContent.replace(imageURL.fileName, imageURL.URL);
             }
