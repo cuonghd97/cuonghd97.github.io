@@ -6,10 +6,11 @@ export const Menu = () => {
         <div className={styles.menu}>
             <ul>
                 <li className={styles.active}>All post</li>
+                <li>Service Architecture</li>
                 <li>Design Pattern</li>
-                <li>Java</li>
-                <li>Python</li>
-                <li>Golang</li>
+                <li>OOP</li>
+                <li>About me</li>
+                <li>See more</li>
             </ul>
         </div>
     );
