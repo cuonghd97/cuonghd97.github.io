@@ -4,4 +4,5 @@ export interface PostModel {
     contents?: string;
     tag?: string;
     createdAt?: string;
+    images?: string[];
 }

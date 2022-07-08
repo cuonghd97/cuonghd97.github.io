@@ -2,6 +2,7 @@ import * as React from 'react';
 import styles from './post-content.module.scss';
 import { useParams } from 'react-router-dom';
 import PostsDataService from '../../services/posts.service';
+import FirebaseStorageService from '../../services/firebase.storage.service';
 import { useEffect, useState } from 'react';
 import { PostModel } from '../../models/post';
 import { Buffer } from 'buffer';
@@ -32,17 +33,27 @@ export const PostContent = () => {
         if (postID) {
             const postResponse = await PostsDataService.getPostByID(postID);
             const contentBase64 = postResponse.data()!['contents'];
-            const content = Buffer.from(contentBase64, 'base64').toString(
+            let mdContent = Buffer.from(contentBase64, 'base64').toString(
                 'utf8'
             );
 
             const postModel: PostModel = {
-                contents: content,
                 createdAt: '',
                 id: postResponse.id,
                 tag: postResponse.data()!['tag'],
                 title: postResponse.data()!['title'],
+                images: postResponse.data()!['images'],
             };
+            const listImageURL =
+                await FirebaseStorageService.getListFileDownloadURL(
+                    postModel.images!
+                );
+            console.log(listImageURL);
+            for (const imageURL of listImageURL) {
+                mdContent = mdContent.replace(imageURL.fileName, imageURL.URL);
+            }
+
+            postModel.contents = mdContent;
 
             setPost(postModel);
             return;
