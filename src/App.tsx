@@ -11,7 +11,7 @@ const App: React.FC = () => {
             <Routes>
                 <Route path='/' element={<HomePage />} />
                 <Route path='post/:postID' element={<PostContent />} />
-                <Route path='secret-gallery' element={<ImageGallery />} />
+                <Route path='/secret-gallery' element={<ImageGallery />} />
             </Routes>
         </BrowserRouter>
     )
