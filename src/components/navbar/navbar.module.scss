@@ -26,3 +26,9 @@
         color: #96a5b3;
     }
 }
+
+@media screen and (max-width: 500px){
+    .imageContainer {
+        display: none;
+    }
+}
