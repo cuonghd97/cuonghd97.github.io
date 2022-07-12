@@ -24,3 +24,8 @@
         font-size: 35px;
     }
 }
+
+a {
+    text-decoration: none;
+    color: #96a5b3;
+}

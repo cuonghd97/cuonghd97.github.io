@@ -1,21 +1,44 @@
-# Microservice Architecture
-### Context
-Giống như yêu cầu phần mềm của kiến trúc `monoithic`: Bạn đang phát triển một ứng dụng server-side. Ứng dụng của bạn phải hỗ trợ rất nhiều các client khác nhau ví dụ như 
-trình duyệt desktop, trình duyệt mobile và các ứng dụng cho thiết bị di động. Phải có các API cho
-các ứng dụng bên thứ 3 gọi. Ứng dụng của bạn có thể tích hợp với các ứng dụng khác qua web service hoặc message broker.
-Ứng dụng phải xử lý các HTTP request theo logic của nghiệp vụ, truy cập vào database, gửi - nhận message với các hệ thống
-khác và trả về các response dạng HTML/JSON/XML. 
-### Problem
-Vấn đề đặt ra là sẽ dùng kiến trúc triển khai nào cho ứng dụng ta vừa nêu trên.
-### Force
-+ Có một nhóm các developer đang phát triển ứng dụng.
-+ Những thành viên mới phải nhanh chóng làm việc hiệu quả.
-+ Ứng dụng đang phát triển phải dễ hiểu và dễ sửa đổi.
-+ Bạn muốn áp dụng `Continuous Deployment` cho ứng dụng.
-+ Bạn phải chạy nhiều instance của ứng dụng trên nhiều máy để đáp ứng các yêu cầu về khả năng mở rộng và tính khả dụng.
-+ Bạn muốn tận dụng các công nghệ mới nổi (frame works, ngôn ngữ lập trình,...).
-### Solution
+# Lập trình là gì?
+Bài viết được đăng bởi tác giả [@forgoodcode](https://www.instagram.com/forgoodcode/)
 
-### Exampl
+Giải thích theo một cách đơn giản nhất lập trình là quá trình chúng ta viết code để hướng dẫn
+máy tính hoặc phần mềm thực hiện.
 
-### Resulting context
+Sau đây cũng là một cách giải thích khác:
+
+Một lập trình viên đã được hỏi một câu hỏi phỏng vấn:
+
+> Nếu bạn xây dựng một bể bơi cho Mark Zuckerberg và không cần quan tâm về
+> chi phí hãy mô tả cái bể bơi mà bạn định xây dựng?
+
+Hiện tại chúng ta chưa có một chi tiết về bể bơi được xây dựng như thế nào và các yêu
+cầu cho nó.
+
+Và câu trả lời của anh ta là:
+
+>Hãy xem xét các thành phần sau đây: một bể nước, một đài phun nước gần đó, một 
+> phòng thay đồ, một quầy bar, khu tắm nắng và một số thú mà người giàu để bên cạnh
+> bể bơi của họ. Nếu Mark yêu thích Star Wars, nó cũng có thể là một bể bơi mang phong
+> cách Star Wars. 
+> 
+> Bể bơi sẽ được thiết kế hình chữ nhật với kích thước tiêu chuẩn là rộng 16ft và dài
+> 32ft. Giờ đến phần ánh sáng, sẽ có một bóng đèn mỗi chu vi 4ft của bể bơi. Và màu của ánh sáng
+> sẽ được Mark chọn theo chủ để của phe Sith hay Jedy. Nếu nhìn kỹ vào các bóng đèn bạn sẽ thấy
+> một nhân vật trong bộ phim Star War trên đó. Ánh đèn cũng có ...
+
+Khi trả lời đến đây anh ấy bị người phỏng vấn ngắt lời.
+
+Người phỏng vấn:
+> Ta hãy bắt đầu sang câu hỏi tiếp theo.
+
+Lập trình viên:
+> Tôi vẫn chưa kết thúc câu trả lời của mình, tôi chỉ vừa mới bắt đầu trả lời.
+
+Người phỏng vấn:
+> Anh không cần trả lời nữa, anh được lọt vào danh sách phỏng vấn vòng tiếp theo.
+
+Qua cuộc trò truyện trên ta thấy: **Lập trình** là việc tiếp nhận một vấn đề
+(xây dựng bể bơi) và đưa ra các hướng giải quyết cho nó (kích thước của bể bơi, ánh sáng,
+, cách bố trí, ...) mà mỗi chi tiết nhỏ được thực hiện một cách chau chuốt. Bởi vì 
+bạn đang cố truyền đạt cách giải quyết đến thức ngốc nghếch nhất trên hành tinh này
+(máy tính).

@@ -1,5 +1,6 @@
 import * as React from 'react';
 import styles from './menu.module.scss';
+import { Link } from "react-router-dom";
 
 export const Menu = () => {
     return (
@@ -10,7 +11,7 @@ export const Menu = () => {
                 <li>Design Pattern</li>
                 <li>OOP</li>
                 <li>About me</li>
-                <li>See more</li>
+                <li><Link to="/secret-gallery">See more</Link></li>
             </ul>
         </div>
     );

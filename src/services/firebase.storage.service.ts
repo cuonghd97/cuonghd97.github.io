@@ -6,7 +6,7 @@ const storage = getStorage();
 class FirebaseStorageService {
     getListFileDownloadURL = async (listFileName: string[]) => {
         let listFireURL: ImageUrl[] = [];
-        if (listFileName.length == 0) {
+        if (listFileName.length === 0) {
             return listFireURL;
         }
 
