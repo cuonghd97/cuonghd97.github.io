@@ -60,7 +60,7 @@
   },
   "devDependencies": {
     "gh-pages": "^3.2.3",
-    "node-sass": "^7.0.1",
+    "node-sass": "^7.0.3",
     "prettier": "2.5.1"
   }
 }
