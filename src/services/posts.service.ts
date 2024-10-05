@@ -1,4 +1,4 @@
-import { collection, getDocs, doc, getDoc } from 'firebase/firestore';
+import { collection, getDocs, doc, getDoc, orderBy, query } from 'firebase/firestore';
 import { firestore } from '../libs/firebase/firebase';
 
 const collectionPost = 'posts';
@@ -6,7 +6,7 @@ const postsCollection = collection(firestore, collectionPost);
 
 class PostsDataService {
     getListPosts = () => {
-        return getDocs(postsCollection);
+        return getDocs(query( postsCollection, orderBy("created_at", "desc")));
     };
 
     getPostByID = (postID: string) => {
