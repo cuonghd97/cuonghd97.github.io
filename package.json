@@ -1,66 +1,24 @@
 {
-  "name": "todo-app",
-  "version": "0.1.0",
-  "private": true,
-  "homepage": "https://www.the-semicolon.dev",
-  "dependencies": {
-    "@testing-library/jest-dom": "^5.16.2",
-    "@testing-library/react": "^12.1.2",
-    "@testing-library/user-event": "^13.5.0",
-    "@types/jest": "^27.4.0",
-    "@types/node": "^16.11.22",
-    "@types/react": "^17.0.39",
-    "@types/react-beautiful-dnd": "^13.1.2",
-    "@types/react-dom": "^17.0.11",
-    "buffer": "^6.0.3",
-    "firebase": "^9.6.8",
-    "react": "^17.0.2",
-    "react-beautiful-dnd": "^13.1.0",
-    "react-dom": "^17.0.2",
-    "react-icons": "^4.3.1",
-    "react-markdown": "^8.0.3",
-    "react-router-dom": "^6.2.2",
-    "react-scripts": "5.0.0",
-    "rehype-highlight": "^5.0.2",
-    "rehype-raw": "^6.1.1",
-    "rehype-stringify": "^9.0.3",
-    "remark": "^14.0.2",
-    "remark-gfm": "^3.0.1",
-    "remark-parse": "^10.0.1",
-    "remark-rehype": "^10.1.0",
-    "typescript": "^4.5.5",
-    "web-vitals": "^2.1.4"
-  },
+  "name": "cuonghd97.github.io",
+  "type": "module",
+  "version": "1.0.0",
+  "description": "Portfolio & Blog — Backend / Systems Engineer",
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build",
-    "format": "npx prettier --write src/**/*.{css,scss,ts,tsx}"
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview"
   },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cuonghd97/cuonghd97.github.io.git"
   },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  },
-  "devDependencies": {
-    "gh-pages": "^3.2.3",
-    "node-sass": "^7.0.3",
-    "prettier": "2.5.1"
+  "author": "cuonghd97",
+  "license": "MIT",
+  "dependencies": {
+    "@astrojs/tailwind": "^6.0.2",
+    "@tailwindcss/typography": "^0.5.19",
+    "astro": "^6.4.2",
+    "tailwindcss": "^3.4.19"
   }
 }

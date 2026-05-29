@@ -1,0 +1,91 @@
+---
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const { title, description = 'Backend & Systems Engineer — Portfolio & Blog' } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en" class="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <meta name="generator" content={Astro.generator} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <title>{title}</title>
+  </head>
+  <body
+    class="min-h-screen bg-gray-950 text-gray-100 font-sans antialiased selection:bg-emerald-500/30 selection:text-emerald-200"
+  >
+    <!-- Ambient background glow -->
+    <div class="fixed inset-0 -z-10 overflow-hidden pointer-events-none">
+      <div
+        class="absolute -top-40 -right-40 w-[600px] h-[600px] rounded-full bg-emerald-500/5 blur-3xl"
+      >
+      </div>
+      <div
+        class="absolute -bottom-40 -left-40 w-[500px] h-[500px] rounded-full bg-cyan-500/5 blur-3xl"
+      >
+      </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav
+      class="sticky top-0 z-50 border-b border-gray-800/60 bg-gray-950/80 backdrop-blur-xl"
+    >
+      <div
+        class="mx-auto flex max-w-5xl items-center justify-between px-6 py-4"
+      >
+        <a
+          href="/"
+          class="text-lg font-bold tracking-tight text-emerald-400 transition-colors hover:text-emerald-300"
+        >
+          ~/cuonghd97
+        </a>
+        <div class="flex items-center gap-6 text-sm font-medium">
+          <a
+            href="/"
+            class="text-gray-400 transition-all duration-300 hover:text-emerald-400"
+            >Home</a
+          >
+          <a
+            href="/blog"
+            class="text-gray-400 transition-all duration-300 hover:text-emerald-400"
+            >Blog</a
+          >
+          <a
+            href="https://github.com/cuonghd97"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="text-gray-400 transition-all duration-300 hover:text-emerald-400"
+            >GitHub</a
+          >
+        </div>
+      </div>
+    </nav>
+
+    <!-- Main content -->
+    <main class="mx-auto max-w-5xl px-6 py-12">
+      <slot />
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-gray-800/60">
+      <div
+        class="mx-auto flex max-w-5xl items-center justify-between px-6 py-8 text-sm text-gray-500"
+      >
+        <span>&copy; {new Date().getFullYear()} cuonghd97. All rights reserved.</span>
+        <span>Built with <a href="https://astro.build" target="_blank" rel="noopener noreferrer" class="text-emerald-500 hover:text-emerald-400 transition-colors">Astro</a></span>
+      </div>
+    </footer>
+  </body>
+</html>

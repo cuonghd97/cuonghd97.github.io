@@ -1,0 +1,78 @@
+<!DOCTYPE html><html lang="en" class="dark"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="description" content="Lessons learned from building distributed systems: circuit breakers, retry patterns, and why gRPC beats REST for internal service communication."><meta name="generator" content="Astro v6.4.2"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"><title>Designing Resilient Microservices with Spring Boot and gRPC — cuonghd97</title><link rel="stylesheet" href="/_astro/_astro_content.DIr51exF.css"></head> <body class="min-h-screen bg-gray-950 text-gray-100 font-sans antialiased selection:bg-emerald-500/30 selection:text-emerald-200"> <!-- Ambient background glow --> <div class="fixed inset-0 -z-10 overflow-hidden pointer-events-none"> <div class="absolute -top-40 -right-40 w-[600px] h-[600px] rounded-full bg-emerald-500/5 blur-3xl"></div> <div class="absolute -bottom-40 -left-40 w-[500px] h-[500px] rounded-full bg-cyan-500/5 blur-3xl"></div> </div> <!-- Navigation --> <nav class="sticky top-0 z-50 border-b border-gray-800/60 bg-gray-950/80 backdrop-blur-xl"> <div class="mx-auto flex max-w-5xl items-center justify-between px-6 py-4"> <a href="/" class="text-lg font-bold tracking-tight text-emerald-400 transition-colors hover:text-emerald-300">
+~/cuonghd97
+</a> <div class="flex items-center gap-6 text-sm font-medium"> <a href="/" class="text-gray-400 transition-all duration-300 hover:text-emerald-400">Home</a> <a href="/blog" class="text-gray-400 transition-all duration-300 hover:text-emerald-400">Blog</a> <a href="https://github.com/cuonghd97" target="_blank" rel="noopener noreferrer" class="text-gray-400 transition-all duration-300 hover:text-emerald-400">GitHub</a> </div> </div> </nav> <!-- Main content --> <main class="mx-auto max-w-5xl px-6 py-12">  <article> <!-- Post header --> <header class="mb-10 border-b border-gray-800/60 pb-10"> <div class="mb-4 flex flex-wrap items-center gap-3 text-sm text-gray-400"> <time datetime="2026-05-15T00:00:00.000Z" class="flex items-center gap-1.5"> <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path> </svg> May 15, 2026 </time> <span class="text-gray-600">·</span> <span class="flex items-center gap-1.5"> <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path> </svg> 1 min read
+</span> </div> <h1 class="mb-4 text-3xl font-extrabold leading-tight tracking-tight text-white sm:text-4xl lg:text-5xl"> Designing Resilient Microservices with Spring Boot and gRPC </h1> <p class="text-lg text-gray-400">Lessons learned from building distributed systems: circuit breakers, retry patterns, and why gRPC beats REST for internal service communication.</p> <div class="mt-5 flex flex-wrap gap-2"> <a href="/blog?tag=backend" class="rounded-full bg-emerald-500/10 px-3 py-1 text-xs font-medium text-emerald-400 ring-1 ring-emerald-500/20 transition-all duration-300 hover:bg-emerald-500/20 hover:ring-emerald-500/40">
+#backend </a><a href="/blog?tag=java" class="rounded-full bg-emerald-500/10 px-3 py-1 text-xs font-medium text-emerald-400 ring-1 ring-emerald-500/20 transition-all duration-300 hover:bg-emerald-500/20 hover:ring-emerald-500/40">
+#java </a><a href="/blog?tag=architecture" class="rounded-full bg-emerald-500/10 px-3 py-1 text-xs font-medium text-emerald-400 ring-1 ring-emerald-500/20 transition-all duration-300 hover:bg-emerald-500/20 hover:ring-emerald-500/40">
+#architecture </a> </div> </header> <!-- Post body --> <div class="prose prose-invert lg:prose-xl max-w-none prose-headings:text-emerald-400 prose-code:text-cyan-300 prose-a:text-emerald-400 prose-a:no-underline hover:prose-a:underline prose-pre:bg-gray-900 prose-pre:border prose-pre:border-gray-800 prose-img:rounded-lg prose-blockquote:border-emerald-500/40">  <h2 id="the-monolith-problem">The Monolith Problem</h2>
+<p>Every growing backend system eventually hits the scaling wall. When a single deployment takes 30 minutes and a small bug in the payment module brings down the entire application, it’s time to consider microservices.</p>
+<h2 id="why-grpc-over-rest">Why gRPC Over REST?</h2>
+<p>For <strong>internal</strong> service-to-service communication, gRPC offers significant advantages:</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Feature</th><th>REST (JSON)</th><th>gRPC (Protobuf)</th></tr></thead><tbody><tr><td>Serialization</td><td>Text-based, slow</td><td>Binary, fast</td></tr><tr><td>Schema</td><td>OpenAPI (optional)</td><td>Proto files (required)</td></tr><tr><td>Streaming</td><td>Limited</td><td>Bidirectional</td></tr><tr><td>Code Gen</td><td>Manual</td><td>Automatic</td></tr></tbody></table>
+<h2 id="service-definition">Service Definition</h2>
+<p>Define your service contract with Protocol Buffers:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto; white-space: pre-wrap; word-wrap: break-word;" tabindex="0" data-language="protobuf"><code><span class="line"><span style="color:#F97583">syntax</span><span style="color:#F97583"> =</span><span style="color:#9ECBFF"> "proto3"</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">package</span><span style="color:#9ECBFF"> com.example.order</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">service</span><span style="color:#B392F0"> OrderService</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#F97583">  rpc</span><span style="color:#B392F0"> CreateOrder</span><span style="color:#E1E4E8"> (</span><span style="color:#B392F0">CreateOrderRequest</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">returns</span><span style="color:#E1E4E8"> (</span><span style="color:#B392F0">OrderResponse</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#F97583">  rpc</span><span style="color:#B392F0"> GetOrder</span><span style="color:#E1E4E8"> (</span><span style="color:#B392F0">GetOrderRequest</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">returns</span><span style="color:#E1E4E8"> (</span><span style="color:#B392F0">OrderResponse</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#F97583">  rpc</span><span style="color:#B392F0"> StreamOrderUpdates</span><span style="color:#E1E4E8"> (</span><span style="color:#B392F0">GetOrderRequest</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">returns</span><span style="color:#E1E4E8"> (</span><span style="color:#F97583">stream</span><span style="color:#B392F0"> OrderUpdate</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">message</span><span style="color:#B392F0"> CreateOrderRequest</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#F97583">  string</span><span style="color:#E1E4E8"> product_id </span><span style="color:#F97583">=</span><span style="color:#79B8FF"> 1</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#F97583">  int32</span><span style="color:#E1E4E8"> quantity </span><span style="color:#F97583">=</span><span style="color:#79B8FF"> 2</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#F97583">  string</span><span style="color:#E1E4E8"> customer_id </span><span style="color:#F97583">=</span><span style="color:#79B8FF"> 3</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<h2 id="circuit-breaker-pattern">Circuit Breaker Pattern</h2>
+<p>Prevent cascading failures with Resilience4j:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto; white-space: pre-wrap; word-wrap: break-word;" tabindex="0" data-language="java"><code><span class="line"><span style="color:#E1E4E8">@</span><span style="color:#F97583">CircuitBreaker</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">name</span><span style="color:#F97583"> =</span><span style="color:#9ECBFF"> "inventoryService"</span><span style="color:#E1E4E8">, </span><span style="color:#79B8FF">fallbackMethod</span><span style="color:#F97583"> =</span><span style="color:#9ECBFF"> "fallbackCheck"</span><span style="color:#E1E4E8">)</span></span>
+<span class="line"><span style="color:#F97583">public</span><span style="color:#E1E4E8"> InventoryResponse </span><span style="color:#B392F0">checkInventory</span><span style="color:#E1E4E8">(String productId) {</span></span>
+<span class="line"><span style="color:#F97583">    return</span><span style="color:#E1E4E8"> inventoryClient.</span><span style="color:#B392F0">check</span><span style="color:#E1E4E8">(productId);</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">private</span><span style="color:#E1E4E8"> InventoryResponse </span><span style="color:#B392F0">fallbackCheck</span><span style="color:#E1E4E8">(String productId, Exception ex) {</span></span>
+<span class="line"><span style="color:#E1E4E8">    log.</span><span style="color:#B392F0">warn</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">"Inventory service unavailable, using cached data"</span><span style="color:#E1E4E8">, ex);</span></span>
+<span class="line"><span style="color:#F97583">    return</span><span style="color:#E1E4E8"> cacheService.</span><span style="color:#B392F0">getCachedInventory</span><span style="color:#E1E4E8">(productId);</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<h2 id="key-takeaways">Key Takeaways</h2>
+<ol>
+<li><strong>Use gRPC for internal communication</strong> — It’s faster and type-safe</li>
+<li><strong>Always implement circuit breakers</strong> — Failures will happen</li>
+<li><strong>Design for eventual consistency</strong> — Distributed transactions are hard</li>
+<li><strong>Invest in observability</strong> — You can’t fix what you can’t see</li>
+</ol>  </div> <!-- Back to blog --> <div class="mt-16 border-t border-gray-800/60 pt-8"> <a href="/blog" class="group inline-flex items-center gap-2 text-sm font-medium text-gray-400 transition-all duration-300 hover:text-emerald-400"> <svg class="h-4 w-4 transition-transform duration-300 group-hover:-translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path> </svg>
+Back to all posts
+</a> </div> </article>  </main> <!-- Footer --> <footer class="border-t border-gray-800/60"> <div class="mx-auto flex max-w-5xl items-center justify-between px-6 py-8 text-sm text-gray-500"> <span>&copy; 2026 cuonghd97. All rights reserved.</span> <span>Built with <a href="https://astro.build" target="_blank" rel="noopener noreferrer" class="text-emerald-500 hover:text-emerald-400 transition-colors">Astro</a></span> </div> </footer> </body></html>
